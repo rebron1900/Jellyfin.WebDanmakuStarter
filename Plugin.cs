@@ -106,7 +106,7 @@ public class Plugin : BasePlugin<PluginConfiguration>, IHasWebPages
             {
                 Name = "WebDanmakuStarter",
                 EmbeddedResourcePath = string.Format(
-                    CultureInfo.InvariantCulture, "{0}.Configuration.PluginPage.html", GetType().Namespace
+                    CultureInfo.InvariantCulture, "{0}.Configuration.configPage.html", GetType().Namespace
                 )
             }
         ];
