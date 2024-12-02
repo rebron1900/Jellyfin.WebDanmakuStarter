@@ -6,9 +6,9 @@ using MediaBrowser.Controller.Configuration;
 using MediaBrowser.Model.Plugins;
 using MediaBrowser.Model.Serialization;
 using Microsoft.Extensions.Logging;
-using Nekonya.WebDanmukuStarter.Configuration;
+using Nekonya.WebDanmakuStarter.Configuration;
 
-namespace Nekonya.WebDanmukuStarter;
+namespace Nekonya.WebDanmakuStarter;
 
 public class Plugin : BasePlugin<PluginConfiguration>, IHasWebPages
 {
@@ -42,12 +42,12 @@ public class Plugin : BasePlugin<PluginConfiguration>, IHasWebPages
 
         string htmlText = File.ReadAllText(indexFile, Encoding.UTF8);
         var changed = false;
-        if (!this.Configuration.EnableDanmuku)
+        if (!this.Configuration.EnableDanmaku)
         {
             // 不启用，如果有脚本则移除
             if (TryRemoveScriptElementIfExist(ref htmlText, scriptUrl))
             {
-                logger.LogInformation("DanmukuStarter: Removed script element from index.html ({scriptUrl})", scriptUrl);
+                logger.LogInformation("DanmakuStarter: Removed script element from index.html ({scriptUrl})", scriptUrl);
                 changed = true;
             }
 
@@ -56,7 +56,7 @@ public class Plugin : BasePlugin<PluginConfiguration>, IHasWebPages
                 // 刚刚使用用户配置的url进行检查，但没有要处理的。但以防万一，使用默认值再检查一次
                 if(TryRemoveScriptElementIfExist(ref htmlText))
                 {
-                    logger.LogInformation("DanmukuStarter: Removed script element from index.html (use defaule scripturl: {DefaultScriptUrl})", DefaultScriptUrl);
+                    logger.LogInformation("DanmakuStarter: Removed script element from index.html (use defaule scripturl: {DefaultScriptUrl})", DefaultScriptUrl);
                     changed = true;
                 }
             }
@@ -69,7 +69,7 @@ public class Plugin : BasePlugin<PluginConfiguration>, IHasWebPages
             {
                 if (TryRemoveScriptElementIfExist(ref htmlText))
                 {
-                    logger.LogInformation("DanmukuStarter: Removed default script element from index.html");
+                    logger.LogInformation("DanmakuStarter: Removed default script element from index.html");
                     changed = true;
                 }
             }
@@ -77,7 +77,7 @@ public class Plugin : BasePlugin<PluginConfiguration>, IHasWebPages
             // 添加脚本
             if (AddScriptElementIfNotExist(ref htmlText, scriptUrl))
             {
-                logger.LogInformation("DanmukuStarter: Added script element to index.html ({scriptUrl})", scriptUrl);
+                logger.LogInformation("DanmakuStarter: Added script element to index.html ({scriptUrl})", scriptUrl);
                 changed = true;
             }
         }
@@ -85,11 +85,11 @@ public class Plugin : BasePlugin<PluginConfiguration>, IHasWebPages
         if (changed)
         {
             File.WriteAllText(indexFile, htmlText, Encoding.UTF8);
-            logger.LogInformation("DanmukuStarter: index.html has been modified");
+            logger.LogInformation("DanmakuStarter: index.html has been modified");
         }
     }
 
-    public override string Name => "DanmukuStarter";
+    public override string Name => "DanmakuStarter";
 
     public override Guid Id => Guid.Parse("d70666cf-0db6-4074-9f3e-aea9959d956d");
 
@@ -104,9 +104,9 @@ public class Plugin : BasePlugin<PluginConfiguration>, IHasWebPages
         [
             new PluginPageInfo
             {
-                Name = "WebDanmukuStarter",
+                Name = "WebDanmakuStarter",
                 EmbeddedResourcePath = string.Format(
-                    CultureInfo.InvariantCulture, "{0}.Configuration.configPage.html", "WebDanmukuStarter"
+                    CultureInfo.InvariantCulture, "{0}.Configuration.configPage.html", "WebDanmakuStarter"
                 )
             }
         ];

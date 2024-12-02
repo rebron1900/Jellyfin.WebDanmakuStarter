@@ -1,13 +1,13 @@
 ﻿using MediaBrowser.Model.Plugins;
 
-namespace Nekonya.WebDanmukuStarter.Configuration;
+namespace Nekonya.WebDanmakuStarter.Configuration;
 
 public class PluginConfiguration : BasePluginConfiguration
 {
     /// <summary>
     /// 是否启用弹幕
     /// </summary>
-    public bool EnableDanmuku { get; set; } = true;
+    public bool EnableDanmaku { get; set; } = true;
 
     /// <summary>
     /// 脚本地址
