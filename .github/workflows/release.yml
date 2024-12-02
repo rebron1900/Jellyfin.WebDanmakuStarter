@@ -26,12 +26,12 @@ jobs:
       run: dotnet build --configuration Release --no-restore
 
     - name: Publish
-      run: dotnet publish --configuration Release --output ./publish Jellyfin.Plugin.WebDanmakuStarter
+      run: dotnet publish --configuration Release --output ./publish ./WebDanmakuStarter.csproj
 
     - name: Create release artifact
       uses: actions/upload-artifact@v4
       with:
-        name: Jellyfin.Plugin.WebDanmakuStarter
+        name: WebDanmakuStarter
         path: ./publish/*.dll
 
   release:
@@ -42,7 +42,7 @@ jobs:
     - name: Download artifact
       uses: actions/download-artifact@v4
       with:
-        name: Jellyfin.Plugin.WebDanmakuStarter
+        name: WebDanmakuStarter
         path: ./publish
 
     - name: Create GitHub Release
