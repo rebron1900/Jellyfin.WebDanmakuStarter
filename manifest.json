@@ -1,0 +1,20 @@
+[
+    {
+        "category": "Metadata",
+        "guid": "d70666cf-0db6-4074-9f3e-aea9959d956d",
+        "name": "WebDanmukuStarter",
+        "description": "Hello Danmuku",
+        "owner": "yomunsam",
+        "overview": "Hello Danmuku",
+        "versions": [
+            {
+                "checksum": "9ADB3D6C469B874A71B27B64F1C7C6B7FE780D03",
+                "changelog": "hello world",
+                "targetAbi": "10.6.0.0",
+                "sourceUrl": "https://repo.jellyfin.org/releases/other/whats-this-plugin.zip.gif",
+                "timestamp": "2024-12-03 01:02:58",
+                "version": "1.0.0.0"
+            }
+        ]
+    }
+]
