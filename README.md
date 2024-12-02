@@ -1,4 +1,4 @@
-# Jellyfin Web Danmaku Starter
+# Jellyfin Web Danmuku Starter
 
 
 一种简化的方式，通过一个插件给 Jellyfin 添加 Web 弹幕功能。
@@ -15,10 +15,10 @@
 在Jellyfin的插件管理页面，添加一个新的插件“存储库”地址：
 
 ```
-https://github.com/yomunsam/Jellyfin.WebDanmakuStarter/raw/master/manifest.json
+https://github.com/yomunsam/Jellyfin.WebDanmukuStarter/raw/master/manifest.json
 ```
 
-随后搜索并安装“WebDanmakuStarter”插件，之后重启Jellyfin服务器即可。
+随后搜索并安装“WebDanmukuStarter”插件，之后重启Jellyfin服务器即可。
 
 <br>
 

@@ -11,7 +11,7 @@
                 <form id="ConfigForm">
                     <div class="checkboxContainer checkboxContainer-withDescription">
                         <label class="emby-checkbox-label">
-                            <input id="EnableDanmaku" name="EnableDanmaku" type="checkbox" is="emby-checkbox" />
+                            <input id="EnableDanmuku" name="EnableDanmuku" type="checkbox" is="emby-checkbox" />
                             <span>是否启用弹幕</span>
                         </label>
                     </div>
@@ -37,7 +37,7 @@
                 .addEventListener('pageshow', function() {
                     Dashboard.showLoadingMsg();
                     ApiClient.getPluginConfiguration(PluginConfig.pluginUniqueId).then(function(config) {
-                        document.querySelector('#EnableDanmaku').checked = config.EnableDanmaku;
+                        document.querySelector('#EnableDanmuku').checked = config.EnableDanmuku;
                         document.querySelector('#ScriptUrl').value = config.ScriptUrl || '';
                         Dashboard.hideLoadingMsg();
                     });
@@ -49,7 +49,7 @@
                 Dashboard.showLoadingMsg();
 
                 var config = {
-                    EnableDanmaku: document.querySelector('#EnableDanmaku').checked,
+                    EnableDanmuku: document.querySelector('#EnableDanmuku').checked,
                     ScriptUrl: document.querySelector('#ScriptUrl').value
                 };
 
