@@ -1,0 +1,57 @@
+
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up .NET 8.x
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+
+    - name: Publish
+      run: dotnet publish --configuration Release --output ./publish Jellyfin.Plugin.WebDanmakuStarter
+
+    - name: Create release artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: Jellyfin.Plugin.WebDanmakuStarter
+        path: ./publish/*.dll
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Download artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: Jellyfin.Plugin.WebDanmakuStarter
+        path: ./publish
+
+    - name: Create GitHub Release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        draft: false
+        prerelease: false
+        files: ./output/**
