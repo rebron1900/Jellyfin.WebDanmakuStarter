@@ -20,6 +20,11 @@ https://github.com/yomunsam/Jellyfin.WebDanmakuStarter/raw/master/manifest.json
 
 随后搜索并安装“WebDanmakuStarter”插件，之后重启Jellyfin服务器即可。
 
+一些互联网不便地区，可尝试使用镜像加速(来自第三方工具)
+```
+https://www.ghproxy.cn/https://raw.githubusercontent.com/yomunsam/Jellyfin.WebDanmakuStarter/refs/heads/master/manifest.json
+```
+
 <br>
 
 # 在设置中切换
