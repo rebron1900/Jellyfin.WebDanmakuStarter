@@ -131,9 +131,9 @@ public class Plugin : BasePlugin<PluginConfiguration>, IHasWebPages
     {
         string scriptUrlToCheck = scriptUrl ?? DefaultScriptUrl;
         string scriptElement = $"<script src=\"{scriptUrlToCheck}\" defer></script>";
-        if (htmlText.Contains(scriptUrl))
+        if (htmlText.Contains(scriptUrlToCheck))
         {
-            htmlText = htmlText.Replace(scriptUrl, "");
+            htmlText = htmlText.Replace(scriptUrlToCheck, "");
             return true;
         }
 
@@ -151,7 +151,7 @@ public class Plugin : BasePlugin<PluginConfiguration>, IHasWebPages
         string finalScriptUrl = scriptUrl ?? DefaultScriptUrl;
         if (!htmlText.Contains(scriptUrl))
         {
-            htmlText = htmlText.Replace("</head>", $"{scriptElement}</head>");
+            htmlText = htmlText.Replace("</head>", $"{finalScriptUrl}</head>");
             return true;
         }
         return false;
