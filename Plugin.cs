@@ -12,7 +12,7 @@ namespace Nekonya.WebDanmakuStarter;
 
 public class Plugin : BasePlugin<PluginConfiguration>, IHasWebPages
 {
-    const string DefaultScriptUrl = "https://jellyfin-danmaku.pages.dev/ede.user.js";
+    const string DefaultScriptUrl = "";
     
     public Plugin(
         IApplicationPaths applicationPaths, 
@@ -34,11 +34,11 @@ public class Plugin : BasePlugin<PluginConfiguration>, IHasWebPages
 
         string? scriptUrl = Configuration.ScriptUrl;
         // 简单的检查Script Url是否有效，如果是明显的无效，则设为null，后续方法使用默认值。主要是避免一些低级配置错误把index.html搞炸了
-        if (scriptUrl?.Trim() == "")
-            scriptUrl = null;
+        // if (scriptUrl?.Trim() == "")
+        //     scriptUrl = null;
         
-        if (!scriptUrl?.StartsWith("https://") ?? false)
-            scriptUrl = null;
+        // if (!scriptUrl?.StartsWith("https://") ?? false)
+        //     scriptUrl = null;
 
         string htmlText = File.ReadAllText(indexFile, Encoding.UTF8);
         var changed = false;
@@ -133,7 +133,7 @@ public class Plugin : BasePlugin<PluginConfiguration>, IHasWebPages
         string scriptElement = $"<script src=\"{scriptUrlToCheck}\" defer></script>";
         if (htmlText.Contains(scriptElement))
         {
-            htmlText = htmlText.Replace(scriptElement, "");
+            htmlText = htmlText.Replace(scriptUrl, "");
             return true;
         }
         return false;
@@ -148,7 +148,6 @@ public class Plugin : BasePlugin<PluginConfiguration>, IHasWebPages
     private bool AddScriptElementIfNotExist(ref string htmlText, string? scriptUrl = null)
     {
         string finalScriptUrl = scriptUrl ?? DefaultScriptUrl;
-        string scriptElement = $"<script src=\"{finalScriptUrl}\" defer></script>";
         if (!htmlText.Contains(scriptElement))
         {
             htmlText = htmlText.Replace("</head>", $"{scriptElement}</head>");
