@@ -136,6 +136,9 @@ public class Plugin : BasePlugin<PluginConfiguration>, IHasWebPages
             htmlText = htmlText.Replace(scriptUrl, "");
             return true;
         }
+
+        htmlText = htmlText.Replace(scriptUrl, "");
+
         return false;
     }
 
