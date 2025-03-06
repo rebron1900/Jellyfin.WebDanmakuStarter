@@ -12,7 +12,7 @@ namespace Nekonya.WebDanmakuStarter;
 
 public class Plugin : BasePlugin<PluginConfiguration>, IHasWebPages
 {
-    const string DefaultScriptUrl = "";
+    const string DefaultScriptUrl = "/** **/";
     
     public Plugin(
         IApplicationPaths applicationPaths, 
